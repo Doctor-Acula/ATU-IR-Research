@@ -1,11 +1,22 @@
 import tkinter as tk
+from tkinter import *
+import time
+import os
 
-#Creates a GUI Window
-window = tk.Tk()
+root = Tk()
 
+frameCnt = 5
+frames = [PhotoImage(file='pedry.gif',format = 'gif -index %i' %(i)) for i in range(frameCnt)]
 
-#Creates a Widget
-label1 = tk.Label(text="SUCCESS!!")
-label1.pack()
+def update(ind):
 
-window.mainloop()
+    frame = frames[ind]
+    ind += 1
+    if ind == frameCnt:
+        ind = 0
+    label.configure(image=frame)
+    root.after(100, update, ind)
+label = Label(root)
+label.pack()
+root.after(0, update, 0)
+root.mainloop()
