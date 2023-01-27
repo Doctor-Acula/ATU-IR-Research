@@ -1,5 +1,6 @@
 import tkinter as tk
 import os
+import time
 
 #Creates a GUI Window
 window = tk.Tk()
@@ -10,8 +11,8 @@ label1.pack()
 
 #Creates a functioning button
 button1 = tk.Button(
-    text='Do Not Press',
-    width=15,
+    text='Access Main Security Grid',
+    width=35,
     height=2,
     bg="black",
     fg="Red",
@@ -26,8 +27,10 @@ buttonClicked = True #This may be backwards... Just work with it for now
 
 def button1_pressed():
     if buttonClicked == True:
-        print("Button Pressed")
-        os.system('GUIOutput.py')
+        os.system('python GUIOutput.py &')
+        for i in range(0,30):
+            print("YOU DIDN'T SAY THE MAGIC WORD!")
+            time.sleep(0.5)
     else:
         print("Button Not Pressed")
 button1.config(command=button1_pressed)
@@ -51,10 +54,11 @@ button2Clicked = True #This may be backwards... Just work with it for now
 def button2_pressed():
     if button2Clicked == True:
         print("Button Pressed")
-        os.system('GUIOutput.py')
+        os.system('python pedrotest.py')
     else:
         print("Button Not Pressed")
-button2.config(command=button1_pressed)
+button2.config(command=button2_pressed)
 
 
 window.mainloop()
+
